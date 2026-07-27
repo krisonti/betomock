@@ -14,7 +14,6 @@
   "@context": "https://schema.org",
   "@type": "GeneralContractor",
   "name": "Beto's Electric",
-  "image": "https://res.cloudinary.com/soko-demo/image/upload/w_1600,q_auto,f_auto/betos-electric/hero.jpg",
   "telephone": "+16025555555",
   "email": "marquezalberto294@gmail.com",
   "address": {
@@ -160,8 +159,8 @@
     display: flex;
     align-items: center;
     color: var(--white);
-    background: linear-gradient(180deg, rgba(11,37,69,0.75), rgba(8,27,52,0.88)),
-      url('https://res.cloudinary.com/soko-demo/image/upload/w_1600,h_1000,c_fill,q_auto,f_auto/betos-electric/hero.jpg') center/cover no-repeat;
+    background: linear-gradient(180deg, rgba(11,37,69,0.6), rgba(8,27,52,0.8)),
+      url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201600%20900%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%0A%3Cdefs%3E%0A%3Cpattern%20id%3D%22grid%22%20width%3D%2280%22%20height%3D%2280%22%20patternUnits%3D%22userSpaceOnUse%22%3E%0A%3Cpath%20d%3D%22M80%200H0V80%22%20fill%3D%22none%22%20stroke%3D%22%2313315c%22%20stroke-width%3D%221%22/%3E%0A%3C/pattern%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%221600%22%20height%3D%22900%22%20fill%3D%22%230b2545%22/%3E%0A%3Crect%20width%3D%221600%22%20height%3D%22900%22%20fill%3D%22url%28%23grid%29%22/%3E%0A%3Cg%20stroke%3D%22%23d9a441%22%20stroke-width%3D%222.5%22%20fill%3D%22none%22%20opacity%3D%220.55%22%3E%0A%3Cpath%20d%3D%22M0%20620%20L220%20620%20L220%20500%20L420%20500%20L420%20660%20L680%20660%22/%3E%0A%3Cpath%20d%3D%22M1600%20260%20L1380%20260%20L1380%20380%20L1150%20380%20L1150%20200%20L900%20200%22/%3E%0A%3Cpath%20d%3D%22M1600%20760%20L1460%20760%20L1460%20640%20L1260%20640%22/%3E%0A%3Cpath%20d%3D%22M0%20180%20L160%20180%20L160%20300%20L360%20300%22/%3E%0A%3C/g%3E%0A%3Cg%20fill%3D%22%23d9a441%22%20opacity%3D%220.75%22%3E%0A%3Ccircle%20cx%3D%22220%22%20cy%3D%22620%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22420%22%20cy%3D%22500%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22420%22%20cy%3D%22660%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22680%22%20cy%3D%22660%22%20r%3D%226%22/%3E%0A%3Ccircle%20cx%3D%221380%22%20cy%3D%22260%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%221150%22%20cy%3D%22380%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22900%22%20cy%3D%22200%22%20r%3D%226%22/%3E%0A%3Ccircle%20cx%3D%221460%22%20cy%3D%22760%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%221260%22%20cy%3D%22640%22%20r%3D%226%22/%3E%0A%3Ccircle%20cx%3D%22160%22%20cy%3D%22180%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22360%22%20cy%3D%22300%22%20r%3D%226%22/%3E%0A%3C/g%3E%0A%3Cg%20transform%3D%22translate%28760%2C370%29%22%20opacity%3D%220.5%22%3E%0A%3Cpath%20d%3D%22M40%200%20L10%2055%20H35%20L20%20110%20L75%2045%20H45%20Z%22%20fill%3D%22%23d9a441%22/%3E%0A%3C/g%3E%0A%3C/svg%3E\") center/cover no-repeat, var(--navy-dark);
   }
   .hero-content {
     max-width: 640px;
@@ -262,7 +261,6 @@
     position: relative;
     overflow: hidden;
     border-radius: 6px;
-    cursor: pointer;
     aspect-ratio: 4/3;
     background: #dfe3e8;
   }
@@ -728,36 +726,20 @@
     });
   }
 
-  // Build gallery: 12 job photo slots, Cloudinary URLs with graceful placeholder fallback
+  // Build gallery: 12 job photo slots. Self-contained inline SVG placeholders —
+  // no external hosting required. Swap in real photos (as Base64 data URIs) once available;
+  // when a real <img> replaces a placeholder, re-enable the lightbox click handler for that item.
   var galleryGrid = document.getElementById('galleryGrid');
-  var cloudName = 'soko-demo';
-  var folder = 'betos-electric';
   for (var i = 1; i <= 12; i++) {
     var num = i < 10 ? '0' + i : '' + i;
     var item = document.createElement('div');
     item.className = 'gallery-item';
+    item.setAttribute('data-slot', num);
 
-    var thumbUrl = 'https://res.cloudinary.com/' + cloudName + '/image/upload/w_600,h_450,c_fill,q_auto,f_auto/' + folder + '/job-' + num + '.jpg';
-    var fullUrl = 'https://res.cloudinary.com/' + cloudName + '/image/upload/w_1600,q_auto,f_auto/' + folder + '/job-' + num + '.jpg';
-
-    var img = document.createElement('img');
-    img.src = thumbUrl;
-    img.alt = "Beto's Electric job photo " + num;
-    img.loading = 'lazy';
-    img.onerror = function() {
-      var ph = document.createElement('div');
-      ph.className = 'gallery-placeholder';
-      ph.innerHTML = '<svg viewBox="0 0 24 24"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z"/></svg><span>Photo Coming Soon</span>';
-      this.parentNode.replaceChild(ph, this);
-    };
-
-    item.appendChild(img);
-    item.addEventListener('click', function(url){
-      return function(){
-        document.getElementById('lightboxImg').src = url;
-        document.getElementById('lightbox').classList.add('active');
-      };
-    }(fullUrl));
+    var ph = document.createElement('div');
+    ph.className = 'gallery-placeholder';
+    ph.innerHTML = '<svg viewBox="0 0 24 24"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z"/></svg><span>Job Photo ' + num + '<br>Coming Soon</span>';
+    item.appendChild(ph);
 
     galleryGrid.appendChild(item);
   }

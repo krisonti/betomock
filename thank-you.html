@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You | Beto's Electric</title>
+<meta name="description" content="Thanks for reaching out to Beto's Electric. We'll be in touch shortly.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0b2545;
+    --navy-dark: #081b34;
+    --gold: #d9a441;
+    --gold-dark: #b8842e;
+    --white: #ffffff;
+    --off-white: #f5f6f8;
+    --gray: #5a6472;
+    --dark-text: #1a1f29;
+    --border: #e0e3e8;
+    --font-head: 'Oswald', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-body);
+    color: var(--dark-text);
+    background: var(--off-white);
+  }
+  a { text-decoration: none; }
+  h1, h2 { font-family: var(--font-head); text-transform: uppercase; letter-spacing: 0.5px; }
+
+  header.site-header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 16px 20px;
+  }
+  .header-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+  .brand-name { font-family: var(--font-head); font-size: 20px; font-weight: 700; }
+  .brand-roc { font-size: 11px; color: var(--gold); }
+
+  main {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 90px 20px;
+    text-align: center;
+  }
+  .check-circle {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 26px;
+  }
+  .check-circle svg { width: 36px; height: 36px; fill: var(--navy-dark); }
+  main h1 { font-size: 28px; color: var(--navy); margin-bottom: 16px; }
+  main p { font-size: 16px; color: var(--gray); margin-bottom: 30px; }
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    font-family: var(--font-head);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    background: var(--navy);
+    color: var(--white);
+    margin: 6px;
+  }
+  .btn-gold { background: var(--gold); color: var(--navy-dark); }
+
+  footer {
+    background: var(--navy-dark);
+    color: #b7c1d1;
+    text-align: center;
+    padding: 26px 20px;
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <span class="brand-name">Beto's Electric</span>
+    <span class="brand-roc">ROC #12345</span>
+  </div>
+</header>
+
+<main>
+  <div class="check-circle">
+    <svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+  </div>
+  <h1>Thanks — We Got Your Request</h1>
+  <p>Someone from Beto's Electric will reach out shortly to talk through your project and get you a free estimate. If it's urgent, give us a call directly.</p>
+  <a href="tel:6025555555" class="btn btn-gold">Call 602-555-5555</a>
+  <a href="/index.html" class="btn">Back to Home</a>
+</main>
+
+<footer>
+  &copy; <span id="year"></span> Beto's Electric. ROC #12345. Site by SOKO Designs.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
